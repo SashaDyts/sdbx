@@ -1,16 +1,19 @@
+import UserPage from 'pages/UserPage';
+import LoginPage from 'pages/LoginPage';
+import { useState } from 'react';
+
+window.scrollTo(0, 1);
 export const App = () => {
+  const [isLoggined, setIsLoggined] = useState(false);
+  const [username, setUsername] = useState(null);
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      {isLoggined ? (
+        <UserPage username={username} />
+      ) : (
+        <LoginPage setIsLoggined={setIsLoggined} setUsername={setUsername} />
+      )}
+    </>
   );
 };
